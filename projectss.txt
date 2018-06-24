@@ -189,6 +189,170 @@ public:
     }
 };
 
+class search
+{
+public:
+    void searching()
+    {
+        cout<<"FOLLOWING ARE THE INTERNATIONAL FLIGHTS AVAILABLE"<<endl;
+
+        for(int i=0; i<5; i++)
+        {
+            for(int j=0; j<10; j++)
+            {
+                cout<<"FLIGHT FROM "<<l_destination[i]<<" TO "<<i_destination[j]<<endl;
+            }
+        }
+    }
+};
+class local: public booking
+{
+protected:
+    int b_seat;
+    int e_seat;
+    int ch;
+    int k;
+    int p;
+    int option;
+    mytime t1;
+public:
+    void getdata()
+    {
+        k=0;
+        p=0;
+        cout<<"In which AIRLINE you want to travel"<<endl<<endl;
+        cout<<"1)PIA"<<endl;
+        cout<<"2)AIR BLUE"<<endl;
+        cout<<"3)ARAB EMIRATES"<<endl;
+        cout<<"4)QATAR AIRWAYS"<<endl;
+        cout<<"enter your choice"<<endl;;
+        cin>>option;
+        system ("cls");
+        switch(option)
+        {
+        case 1:
+            if (option==1)
+                cout<<setw(40)<<"\n\n\n                                WELCOME TO PIA"<<endl;
+            break;
+        case 2:
+            if(option==2)
+                cout<<setw(40)<<"\n\n\n                                WELCOME TO AIRBLUE"<<endl;
+            break;
+        case 3:
+            if(option==3)
+                cout<<setw(40)<<"\n\n\n                                WELCOME TO ARAB EMIRATES"<<endl;
+            break;
+        case 4:
+            if(option==4)
+                cout<<setw(40)<<"\n\n\n                                WELCOME TO QATAR AIRWAYS"<<endl;
+            break;
+        }
+        cout<<setw(40)<<"\nTHESE ARE THE LOCAL PLACES AVAILABLE\n\n\n"<<endl;
+        cin.ignore();
+        for(int i=0; i<5; i++)
+        {
+            cout<<l_destination[i]<<endl;
+        }
+        booking::getdata();
+        for(int j=0; j<5; j++)
+        {
+            if(strcmp(l_destination[j],c_loc)==0)
+            {
+                k++;
+            }
+        }
+        for( int i=0; i<5; i++)
+        {
+            if(strcmp(l_destination[i],c_loc)==0)
+                p++;
+        }
+        if(k==1&&p==1)
+        {
+            cout<<" FLIGHT AVAILABLE ON THIS ROUTE"<<endl;
+            b_seat=30;
+            e_seat=40;
+            cout<<"In which class you want to travel?"<<endl;
+            cout<<"Make your choice"<<endl<<endl;
+            cout<<"\n\n\n\n\n\n";
+
+            cout<<setw(60)<<"*************************************"<<endl;
+            cout<<setw(60)<<"*     Press 1 for buisness class    *"<<endl;
+            cout<<setw(60)<<"*     Press 2 for economy class     *"<<endl;
+            cout<<setw(60)<<"*************************************"<<endl<<endl<<endl<<endl;
+
+            cout<<"Enter your choice"<<endl;
+            cin>>ch;
+
+            cout<<endl;
+            switch(ch)
+            {
+
+            case 1:
+                b_seat--;
+                if(b_seat<=0)
+                    cout<<"SORRY NO SEAT AVAILABLE"<<endl;
+
+                else
+                    cout<<"SEAT AVAILABLE"<<endl;
+                break;
+
+            case 2:
+                e_seat--;
+                if(e_seat<=0)
+                    cout<<"SORRY NO SEAT AVAILABLE"<<endl;
+                else
+                    cout<<"SEAT AVAILABLE"<<endl;
+                break;
+
+            }
+            t1.getdata();
+
+            system("CLS");
+            booking::show();
+            if(ch==1)
+            {
+                cout<<"|                                                                         "<<endl;
+                cout<<"|Ticket Information:                                                      "<<endl;
+                cout<<"|BUISNESS CLASS                                                           "<<endl;
+
+                ofstream outfile;
+                outfile.open("E:\\E_ticket.txt",ios::app);
+                outfile<<"|                                                                         "<<endl<<
+                       "|Ticket Information:                                                      "<<endl<<
+                       "|BUISNESS CLASS                                                           "<<endl;
+            }
+            if(ch==2)
+            {
+                cout<<"|                                                                         "<<endl;
+                cout<<"|Ticket Information:                                                      "<<endl;
+                cout<<"|ECONOMY CLASS                                                            "<<endl;
+
+                ofstream outfile;
+                outfile.open("E:\\E_ticket.txt",ios::app);
+                outfile<<"|                                                                         "<<endl<<
+                       "|Ticket Information:                                                      "<<endl<<
+                       "|ECONOMY CLASS                                                           "<<endl;
+            }
+
+            cout<<"|Status: confirmed                                                        "<<endl;
+
+            ofstream outfile;
+            outfile.open("E:\\E_ticket.txt",ios::app);
+            outfile<<"|Status: confirmed                                                        "<<endl;
+            t1.show();
+        }
+        else
+
+        {
+            cout<<"__________________________________________________________________________"<<endl;
+            cout<<"|     SORRY NO FLIGHT AVAILABLE ON THIS ROUTE RIGHT NOW                   "<<endl;
+            cout<<"__________________________________________________________________________"<<endl;
+
+        }
+    }
+};
+
+
 class main1
 
  {
