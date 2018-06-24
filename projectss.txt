@@ -659,20 +659,22 @@ m:
 };
 int  main()
 {
-    system("color 3f");
- cout<<"\n\n\n\n\n\n\n\n\n\n\t\t     WELCOME TO AIRWAYS RESERVATION SYSTEM";
- Sleep(2500);
- system ("cls");
- cout<<"\n\n\n\n\n\n\n\t\t          Developed by :";
- Sleep(500);
-  cout<<" BARRY";
-  cout<<"\n\n\n\t\t                         mooge";
-  cout<<"\n\n\n\t\t                         kaafi";
-  
-  Sleep(500);
-  cout<<"\n\n\n\t\t                         HAMSE";
- Sleep(3000);
- system("cls");
- main1 m1;
- m1.getdata();
+    system("color 5f");
+    Sleep(200);
+    cout<<setw(100)<<"\n\n\n\n\n\n\n\n\n\n\t\t     WELCOME TO AIRWAYS RESERVATION SYSTEM";
+    Sleep(2000);
+    system ("cls");
+    cout<<setw(20)<<"\n\n\nDEVELOPED BY :\n\n"<<endl;
+    Sleep(500);
+    cout<<setw(90)<<" MUHAMMED BARRY.....160041006"<<endl;
+    Sleep(1000);
+    cout<<setw(90)<<" HAMSE.....160040013"<<endl;
+    Sleep(1000);
+    cout<<setw(90)<<" ABDIFATAH.....160041079" <<endl;
+    Sleep(1000);
+    cout<<setw(90)<<" KAAFI.....160040015"<<endl;
+    Sleep(2000);
+    system("cls");
+    main1 m1;
+    m1.getdata();
 }
