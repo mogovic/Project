@@ -1,4 +1,195 @@
- class main1
+#include<iostream>
+#include<iomanip>
+#include<conio.h>
+#include<string>
+#include<windows.h>
+#include<fstream>
+using namespace std;
+
+char l_destination[5][20]= {"DHAKA","CHITAGOON","SYLET","DINAJBUR","BORMA"};
+char i_destination[10][20]= {"LONDON","BERLIN","DUBAI","NEW YORK","BEIJING","PARIS","CAPE TOWN","TOKYO","LOS ANGELES","MUMBAI" };
+class mytime
+{
+protected:
+    int choose;
+public:
+    void getdata()
+    {
+        cout<<"ON WHICH TIME YOU WANT TO TRAVEL"<<endl;
+        cout<<"PRESS 1 FOR 11 AM"<<endl;
+        cout<<"PRESS 2 FOR 10 AM"<<endl;
+        cout<<"PRESS 3 FOR 9 AM"<<endl;
+        cin>>choose;
+    }
+    void show()
+    {
+        if(choose==1)
+        {
+            cout<<"|                                                                         "<<endl;
+            cout<<"|flight mytime 11 AM                                                        "<<endl;
+            cout<<"|_________________________________________________________________________"<<endl;
+            cout<<"                  GOOD BYE AND HAVE A SAFE JOURNEY                        "<<endl;
+            ofstream outfile;
+            outfile.open("E:\\E_ticket.txt",ios::app);
+            outfile<<"|                                                                         "<<endl<<
+                   "|flight mytime 11 AM                                                        "<<endl<<
+                   "|_________________________________________________________________________"<<endl<<
+                   "                  GOOD BYE AND HAVE A SAFE JOURNEY                        "<<endl;
+        }
+        if(choose==2)
+        {
+            cout<<"|                                                                         "<<endl;
+            cout<<"|flight mytime 10 AM                                                        "<<endl;
+            cout<<"|_________________________________________________________________________"<<endl;
+            cout<<"                  GOOD BYE AND HAVE A SAFE JOURNEY                        "<<endl;
+            ofstream outfile;
+            outfile.open("E:\\E_ticket.txt",ios::app);
+            outfile<<"|                                                                         "<<endl<<
+                   "|flight mytime 10 AM                                                        "<<endl<<
+                   "|_________________________________________________________________________"<<endl<<
+                   "                  GOOD BYE AND HAVE A SAFE JOURNEY                        "<<endl;
+        }
+        if(choose==3)
+        {
+            cout<<"|                                                                         "<<endl;
+            cout<<"|flight mytime 9 AM                                                        "<<endl;
+            cout<<"|_________________________________________________________________________"<<endl;
+            cout<<"                  GOOD BYE AND HAVE A SAFE JOURNEY                        "<<endl;
+            ofstream outfile;
+            outfile.open("E:\\E_ticket.txt",ios::app);
+            outfile<<"|                                                                         "<<endl<<
+                   "|flight mytime 9 AM                                                        "<<endl<<
+                   "|_________________________________________________________________________"<<endl<<
+                   "                  GOOD BYE AND HAVE A SAFE JOURNEY                        "<<endl;
+        }
+    }
+};
+class passenger
+{
+public:
+    virtual void getdata()
+    {
+    }
+    virtual void show()
+    {
+    }
+};
+class booking:public passenger
+{
+protected:
+    int num;
+    char ch;
+    char firstname[60];
+    char lastname[60];
+    char address[60];
+    char c_loc[30];
+    char dest[30];
+    char reservation_no[60];
+    int option;
+public:
+    void getdata()
+    {
+        fstream records("details.txt",ios::out | ios::in);
+        if (!records.fail())
+        {
+            cout << "records.txt file not found!" << endl;
+            exit(1); //abnormal termination. if something fails
+        }
+
+        cout<<setw(40)<<"\n\n        ::Please enter the required information for passenger number::"<<endl;
+        cout<<"\n\n\nEnter the firstname of passenger: ";
+        cin.getline(firstname,sizeof(firstname));
+        records<<firstname;
+        cout<<endl;
+        cout<<"Enter the lastname of passenger: ";
+        cin.getline(lastname,sizeof(lastname));
+        records<<lastname;
+        cout<<endl<<endl;
+        cout<<"Enter address of passenger:  ";
+        cin.getline(address,60);
+        records<<address;
+        cout<<endl<<endl;
+        cout<<"Enter the Resevation No. of Ticket"<<endl;
+        cin.getline(reservation_no,60);
+        records<<reservation_no;
+        cout<<endl;
+        cout<<"Enter the current location of passenger(IN CAPITAL LETTERS ONLY):  ";
+        cin.getline(c_loc,60);
+        records<<c_loc;
+        cout<<endl<<endl;
+        cout<<"Enter the destination of passenger(IN CAPITAL LETTERS ONLY):  ";
+        cin.getline(dest,60);
+        records<<dest;
+        cout<<endl<<endl;
+        system("CLS");
+        records.close();
+    }
+    void show()
+    {
+        fstream records("details.txt",ios::out | ios::in);
+        if (!records.fail())
+        {
+            cout << "records.txt file not found!" << endl;
+            exit(1); //abnormal termination. if something fails
+        }
+
+        cout<<setw(40)<<"Your E-Ticket is :"<<endl;
+        int t=1;
+        int r=12345;
+        cout<<"                           AIRLINE TICKET                                 "<<endl;
+        cout<<"|Ticket No."<<t<<"                                Reference No."<<r<<"\t  "<<endl;
+        cout<<"|_________________________________________________________________________"<<endl;
+        records>>reservation_no;
+        cout<<"|Resevation No. :"<<reservation_no<<"                                     "<<endl;
+        cout<<"|__________________________________________________________________________"<<endl;
+        cout<<"|Passenger Information :                                                  "<<endl;
+        records>>lastname;
+        records>>firstname;
+        cout<<"|Name :"<<lastname<<"/"<<firstname<<"                                     "<<endl;
+        cout<<"|                                                                         "<<endl;
+        records>>address;
+        cout<<"|Address :"<<address<<"                                                   "<<endl;
+        cout<<"|_________________________________________________________________________"<<endl;
+        cout<<"|flight Information :                                                     "<<endl;
+        cout<<"|12 aug 2011                                                              "<<endl;
+        cout<<"|BOING 747                                                                "<<endl;
+        cout<<"|_________________________________________________________________________"<<endl;
+        records>>c_loc;
+        records>>dest;
+        cout<<"|Depart :"<<c_loc<<"                                                      "<<endl;
+        cout<<"|Arrive :"<<dest<<"                                                       "<<endl;
+        cout<<"|*BAGGAGE allowed 40 Kilos                                                "<<endl;
+        cout<<"|*contact Airline to Confirm baggage allowance                            "<<endl;
+        cout<<"|_________________________________________________________________________"<<endl;
+
+        ofstream outfile("E:\\E_ticket.txt");
+        outfile<<"                           AIRLINE TICKET                                 "<<endl<<
+               "|Ticket No."<<t<<"                                Reference No."<<r<<"\t  "<<endl<<
+               "|_________________________________________________________________________"<<endl<<
+               "|Resevation No. :"<<reservation_no<<"                                     "<<endl<<
+               "|__________________________________________________________________________"<<endl<<
+               "|Passenger Information :                                                  "<<endl<<
+               "|Name :"<<lastname<<"  "<<firstname<<"                                     "<<endl<<
+               "|                                                                         "<<endl<<
+               "|Address :"<<address<<"                                                   "<<endl<<
+               "|_________________________________________________________________________"<<endl<<
+               "|flight Information :                                                     "<<endl<<
+               "|12 aug 2011                                                              "<<endl<<
+               "|BOING 747                                                                "<<endl<<
+               "|_________________________________________________________________________"<<endl<<
+               "|Depart :"<<c_loc<<"                                                      "<<endl<<
+               "|Arrive :"<<dest<<"                                                       "<<endl<<
+               "|*BAGGAGE allowed 40 Kilos                                                "<<endl<<
+               "|*contact Airline to Confirm baggage allowance                            "<<endl<<
+               "|_________________________________________________________________________"<<endl;
+
+        t=t+1;
+        r=r+1;
+        records.close();
+    }
+};
+
+class main1
 
  {
  private:
