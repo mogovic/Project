@@ -517,145 +517,83 @@ class main1
  public:
 
 
-void getdata()
-{
+  void getdata()
+    {
 m:
-   cout<<"\n\n\n\n\n\n";
-   cout<<setw(60)<<"*************************************"<<endl;
-   cout<<setw(60)<<"*      AIRWAYS RESERVATION        *"<<endl;
-   cout<<setw(60)<<"*             MAIN MENU  "<<endl;
-   cout<<setw(60)<<"*        ENTER YOUR CHOICE          *"<<endl;
-   cout<<setw(60)<<"*   PRESS 1 FOR LOCAL BOOKING       *"<<endl;
-   cout<<setw(60)<<"* PRESS 2 FOR INTERNATIONAL BOOKING *"<<endl;
-   cout<<setw(60)<<"*   PRESS 3 FOR SEARCH OF FLIGHTS   *"<<endl;
-   cout<<setw(60)<<"*       NOW ENTER YOUR CHOICE:      *"<<endl;
-   cout<<setw(60)<<"*************************************"<<endl;
+        cout<<"\n\n\n\n\n\n";
+        cout<<setw(100)<<"*************************************"<<endl;
+        cout<<setw(100)<<"*        AIRWAYS RESERVATION        *"<<endl;
+        cout<<setw(100)<<"*             MAIN MENU             *"<<endl;
+        cout<<setw(100)<<"*        ENTER YOUR CHOICE          *"<<endl;
+        cout<<setw(100)<<"*   PRESS 1 FOR LOCAL BOOKING       *"<<endl;
+        cout<<setw(100)<<"* PRESS 2 FOR INTERNATIONAL BOOKING *"<<endl;
+        cout<<setw(100)<<"*   PRESS 3 FOR SEARCH OF FLIGHTS   *"<<endl;
+        cout<<setw(100)<<"*       NOW ENTER YOUR CHOICE:      *"<<endl;
+        cout<<setw(100)<<"*************************************"<<endl;
 
-   cin>>menu_choice;
+        cin>>menu_choice;
 
-  system("cls");
+        system("cls");
 
-   passenger* p1;
+        passenger* p1;
+        booking b1;
+        international i1;
+        local l1;
+        char back;
 
-   booking b1;
+        switch(menu_choice)
+        {
 
-   international i1;
+        case 1:
+            p1=&l1;
+            p1->getdata();
+            cout<<"To Go To Main Menu Press b"<<endl;
+            cin>>back;
+            system("CLS");
+            if (back=='b'|| back=='B')
+                goto m;
 
-   local l1;
+            else
+            {
+                cout<<"\n\n\n\n\n\n";
+                cout<<setw(40)<<"BYE FROM AIR RESERVATION SYSTEM";
+            }
+            break;
+        case 2:
+            p1=&i1;
+            p1->getdata();
+            cout<<"To Go To Main Menu Press b"<<endl;
+            cin>>back;
+            system("CLS");
 
-   char back;
+            if (back=='b'|| back=='B')
+                goto m;
 
+            else
+            {
+                cout<<"\n\n\n\n\n\n";
+                cout<<setw(40)<<"BYE FROM AIR RESERVATION SYSTEM";
+            }
+            break;
 
-   switch(menu_choice)
+        case 3:
+            search s1;
+            s1.searching();
+            cout<<"To Go To Main Menu Press b"<<endl;
+            cin>>back;
 
-   {
+            system("CLS");
+            if (back=='b'|| back=='B')
+                goto m;
 
-   case 1:
-
-
-    p1=&l1;
-
-    p1->getdata();
-
-    cout<<"To Go To Main Menu Press b"<<endl;
-
-    cin>>back;
-
-
-
-    system("CLS");
-
-    if (back=='b')
-
-    {
-
-     goto m;
-
+            else
+            {
+                cout<<"\n\n\n\n\n\n";
+                cout<<setw(40)<<"BYE FROM AIR RESERVATION SYSTEM";
+            }
+            break;
+        }
     }
-
-    else
-
-    {
-
-     cout<<"\n\n\n\n\n\n";
-
-     cout<<setw(40)<<"BYE FROM AIR RESERVATION SYSTEM";
-
-    }
-
-
-    break;
-
-   case 2:
-
-
-    p1=&i1;
-
-    p1->getdata();
-
-    cout<<"To Go To Main Menu Press b"<<endl;
-
-    cin>>back;
-
-
-    system("CLS");
-
-    if (back=='b')
-
-    {
-
-     goto m;
-
-    }
-
-    else
-
-    {
-
-     cout<<"\n\n\n\n\n\n";
-
-     cout<<setw(40)<<"BYE FROM AIR RESERVATION SYSTEM";
-
-    }
-
-    break;
-
-   case 3:
-
-    search s1;
-
-    s1.searching();
-
-    cout<<"To Go To Main Menu Press b"<<endl;
-
-    cin>>back;
-
-
-
-    system("CLS");
-
-    if (back=='b')
-
-    {
-
-     goto m;
-
-    }
-
-    else
-
-    {
-
-     cout<<"\n\n\n\n\n\n";
-
-     cout<<setw(40)<<"BYE FROM AIR RESERVATION SYSTEM";
-
-    }
-
-    break;
-
-}
-}
 };
 int  main()
 {
